@@ -3,7 +3,8 @@
 Memory::Memory(const wchar_t* processName) noexcept {
 	::PROCESSENTRY32 entry = { };
 	entry.dwSize = sizeof(::PROCESSENTRY32);
-	const auto snapShot = ::CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+	const auto snapShot = ::
+	(TH32CS_SNAPPROCESS, 999);
 	while (::Process32Next(snapShot, &entry)) {
 		if (!_wcsicmp(processName, entry.szExeFile)) {
 			processId = entry.th32ProcessID;
